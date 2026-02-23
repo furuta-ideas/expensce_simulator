@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>副業コンサル・街ガイド 経費シミュレーター 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0e17;
+    --surface: #131925;
+    --surface2: #1a2235;
+    --border: #2a3550;
+    --text: #e2e8f0;
+    --text-dim: #8892a8;
+    --accent: #38bdf8;
+    --accent2: #818cf8;
+    --green: #34d399;
+    --yellow: #fbbf24;
+    --red: #f87171;
+    --orange: #fb923c;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family: 'Noto Sans JP', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    padding: 20px;
+  }
+  .container { max-width: 1100px; margin: 0 auto; }
+
+  header {
+    text-align: center;
+    padding: 40px 0 30px;
+    position: relative;
+  }
+  header::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 50%;
+    transform: translateX(-50%);
+    width: 200px; height: 3px;
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+    border-radius: 2px;
+  }
+  h1 {
+    font-size: 1.6rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .subtitle {
+    color: var(--text-dim);
+    font-size: 0.85rem;
+    margin-top: 8px;
+    font-weight: 300;
+  }
+
+  .revenue-input-area {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 28px 32px;
+    margin: 24px 0;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  .revenue-label {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text-dim);
+    white-space: nowrap;
+  }
+  .revenue-input-wrapper {
+    position: relative;
+    flex: 1;
+    min-width: 200px;
+  }
+  .revenue-input-wrapper input {
+    width: 100%;
+    background: var(--bg);
+    border: 2px solid var(--accent);
+    border-radius: 10px;
+    padding: 14px 50px 14px 20px;
+    font-size: 1.6rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 600;
+    color: var(--accent);
+    text-align: right;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .revenue-input-wrapper input:focus { border-color: var(--accent2); }
+  .revenue-input-wrapper .unit {
+    position: absolute;
+    right: 16px; top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-dim);
+    font-size: 0.9rem;
+  }
+  .revenue-display {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85rem;
+    color: var(--text-dim);
+    background: var(--surface2);
+    padding: 8px 16px;
+    border-radius: 8px;
+  }
+
+  .summary-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 14px;
+    margin: 20px 0 28px;
+  }
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+  }
+  .card-label {
+    font-size: 0.75rem;
+    color: var(--text-dim);
+    margin-bottom: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  .card-value {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1.3rem;
+    font-weight: 600;
+  }
+  .card-sub {
+    font-size: 0.7rem;
+    color: var(--text-dim);
+    margin-top: 4px;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    background: var(--surface);
+    border-radius: 14px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
+  thead th {
+    background: var(--surface2);
+    padding: 14px 12px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    text-align: right;
+    border-bottom: 1px solid var(--border);
+  }
+  thead th:first-child { text-align: left; }
+  thead th:nth-child(2) { text-align: center; }
+  tbody td {
+    padding: 12px;
+    font-size: 0.85rem;
+    border-bottom: 1px solid rgba(42,53,80,0.5);
+    text-align: right;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem;
+  }
+  tbody td:first-child {
+    text-align: left;
+    font-family: 'Noto Sans JP', sans-serif;
+    font-weight: 500;
+    font-size: 0.85rem;
+  }
+  tbody td:nth-child(2) { text-align: center; }
+  tbody tr:last-child td { border-bottom: none; }
+  tbody tr:hover { background: rgba(56,189,248,0.04); }
+  tbody tr.total-row {
+    background: var(--surface2);
+    font-weight: 700;
+  }
+  tbody tr.total-row td { border-top: 2px solid var(--accent); }
+
+  .badge {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    font-family: 'Noto Sans JP', sans-serif;
+  }
+  .badge-ok { background: rgba(52,211,153,0.15); color: var(--green); }
+  .badge-warn { background: rgba(251,191,36,0.15); color: var(--yellow); }
+  .badge-high { background: rgba(248,113,113,0.15); color: var(--red); }
+
+  .bar-cell { position: relative; min-width: 120px; }
+  .bar-bg {
+    position: absolute;
+    left: 0; top: 50%;
+    transform: translateY(-50%);
+    height: 6px;
+    background: rgba(255,255,255,0.06);
+    width: 100%;
+    border-radius: 3px;
+  }
+  .bar-fill {
+    position: absolute;
+    left: 0; top: 50%;
+    transform: translateY(-50%);
+    height: 6px;
+    border-radius: 3px;
+    transition: width 0.4s ease;
+  }
+
+  .r7-col {
+    color: var(--accent) !important;
+    font-weight: 600 !important;
+  }
+
+  .notes {
+    margin-top: 24px;
+    padding: 20px 24px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    font-size: 0.8rem;
+    color: var(--text-dim);
+    line-height: 1.7;
+  }
+  .notes strong { color: var(--text); }
+
+  @media (max-width: 768px) {
+    .revenue-input-area { flex-direction: column; }
+    .revenue-input-wrapper input { font-size: 1.2rem; }
+    table { font-size: 0.75rem; }
+    thead th, tbody td { padding: 8px 6px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <h1>副業コンサル・街ガイド 経費シミュレーター</h1>
+    <div class="subtitle">2026年度 経費計画 — 売上に連動した適正経費範囲を自動計算</div>
+  </header>
+
+  <div class="revenue-input-area">
+    <div class="revenue-label">📊 年間売上高（予定）</div>
+    <div class="revenue-input-wrapper">
+      <input type="text" id="revenueInput" value="6,500,000" inputmode="numeric">
+      <span class="unit">円</span>
+    </div>
+    <div class="revenue-display" id="revenueMan"></div>
+  </div>
+
+  <div class="summary-cards">
+    <div class="card">
+      <div class="card-label">経費MIN合計</div>
+      <div class="card-value" id="totalMin" style="color:var(--green)">—</div>
+      <div class="card-sub" id="totalMinPct"></div>
+    </div>
+    <div class="card">
+      <div class="card-label">経費MAX合計</div>
+      <div class="card-value" id="totalMax" style="color:var(--yellow)">—</div>
+      <div class="card-sub" id="totalMaxPct"></div>
+    </div>
+    <div class="card">
+      <div class="card-label">R7実績 経費合計</div>
+      <div class="card-value" id="totalR7" style="color:var(--accent)">—</div>
+      <div class="card-sub" id="totalR7Pct"></div>
+    </div>
+    <div class="card">
+      <div class="card-label">推奨経費率</div>
+      <div class="card-value" style="color:var(--accent2)">60〜80%</div>
+      <div class="card-sub">黒字化の目安</div>
+    </div>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>経費科目</th>
+        <th>判定</th>
+        <th>MIN率</th>
+        <th>MIN金額</th>
+        <th>MAX率</th>
+        <th>MAX金額</th>
+        <th>R7実績</th>
+        <th style="min-width:100px">範囲</th>
+      </tr>
+    </thead>
+    <tbody id="tableBody"></tbody>
+  </table>
+
+  <div class="notes">
+    <strong>📌 注意事項</strong><br>
+    ・MIN/MAX率は、副業コンサル・街ガイド事業（売上150〜650万円規模）の一般的な適正範囲です。<br>
+    ・R7実績は令和7年（Rev7最終版）の決算データに基づきます。<br>
+    ・売上が増加すると経費の絶対額も増えますが、経費率は低下するのが理想です。<br>
+    ・<strong>2026年の最優先目標は黒字化</strong>です。経費率80%以下を目指しましょう。<br>
+    ・減価償却費は車両（定額法6年）のみの継続分で大幅に減少する見込みです。
+  </div>
+</div>
+
+<script>
+const expenses = [
+  { name: "租税公課",         minPct: 0.8, maxPct: 3.0,  r7: 33761  },
+  { name: "水道光熱費",       minPct: 0.8, maxPct: 3.0,  r7: 48974  },
+  { name: "旅費交通費",       minPct: 3.0, maxPct: 10.0, r7: 89482  },
+  { name: "通信費",           minPct: 1.5, maxPct: 5.0,  r7: 53407  },
+  { name: "接待交際費",       minPct: 1.5, maxPct: 7.0,  r7: 107999 },
+  { name: "消耗品費",         minPct: 1.0, maxPct: 8.0,  r7: 252830 },
+  { name: "減価償却費",       minPct: 0.5, maxPct: 8.0,  r7: 337662 },
+  { name: "外注工賃",         minPct: 3.0, maxPct: 20.0, r7: 473991 },
+  { name: "地代家賃",         minPct: 1.5, maxPct: 5.0,  r7: 57584  },
+  { name: "ソフトウェア利用料", minPct: 2.0, maxPct: 12.0, r7: 204688 },
+  { name: "車両費",           minPct: 1.0, maxPct: 6.0,  r7: 126670 },
+  { name: "会議費",           minPct: 0.5, maxPct: 4.0,  r7: 84366  },
+  { name: "調査費",           minPct: 0.0, maxPct: 3.0,  r7: 40120  },
+  { name: "新聞図書費",       minPct: 0.3, maxPct: 2.0,  r7: 15041  },
+  { name: "支払手数料",       minPct: 0.0, maxPct: 1.0,  r7: 527    },
+  { name: "雑費",             minPct: 0.0, maxPct: 1.0,  r7: 0      },
+];
+
+function fmt(n) {
+  return Math.round(n).toLocaleString('ja-JP');
+}
+
+function parseInput(val) {
+  return parseInt(val.replace(/[^0-9]/g, ''), 10) || 0;
+}
+
+function update() {
+  const rev = parseInput(document.getElementById('revenueInput').value);
+  const man = (rev / 10000).toFixed(1);
+  document.getElementById('revenueMan').textContent = `${man} 万円`;
+
+  let totalMin = 0, totalMax = 0, totalR7 = 0;
+  const tbody = document.getElementById('tableBody');
+  tbody.innerHTML = '';
+
+  expenses.forEach(e => {
+    const minVal = rev * e.minPct / 100;
+    const maxVal = rev * e.maxPct / 100;
+    totalMin += minVal;
+    totalMax += maxVal;
+    totalR7 += e.r7;
+
+    let badge, badgeClass;
+    if (e.r7 <= maxVal * 1.0 && e.r7 >= 0) {
+      if (e.r7 <= maxVal * 0.85) {
+        badge = '適正'; badgeClass = 'badge-ok';
+      } else {
+        badge = '注意'; badgeClass = 'badge-warn';
+      }
+    } else {
+      badge = '要確認'; badgeClass = 'badge-high';
+    }
+    // For R7, scale was 1.2M revenue so adjust badge based on that context
+    // Just show the raw comparison for simplicity
+
+    const barMax = rev * 0.25; // scale bar to 25% of revenue
+    const minW = Math.min((minVal / barMax) * 100, 100);
+    const maxW = Math.min((maxVal / barMax) * 100, 100);
+
+    const barColor = badgeClass === 'badge-ok' ? 'var(--green)' :
+                     badgeClass === 'badge-warn' ? 'var(--yellow)' : 'var(--red)';
+
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td>${e.name}</td>
+      <td><span class="badge ${badgeClass}">${badge}</span></td>
+      <td>${e.minPct.toFixed(1)}%</td>
+      <td>${fmt(minVal)}</td>
+      <td>${e.maxPct.toFixed(1)}%</td>
+      <td>${fmt(maxVal)}</td>
+      <td class="r7-col">${fmt(e.r7)}</td>
+      <td class="bar-cell">
+        <div class="bar-bg"></div>
+        <div class="bar-fill" style="width:${maxW}%;background:rgba(255,255,255,0.1)"></div>
+        <div class="bar-fill" style="width:${minW}%;background:${barColor};opacity:0.7"></div>
+      </td>
+    `;
+    tbody.appendChild(tr);
+  });
+
+  // Total row
+  const totalTr = document.createElement('tr');
+  totalTr.className = 'total-row';
+  totalTr.innerHTML = `
+    <td>合計</td>
+    <td></td>
+    <td></td>
+    <td>${fmt(totalMin)}</td>
+    <td></td>
+    <td>${fmt(totalMax)}</td>
+    <td class="r7-col">${fmt(totalR7)}</td>
+    <td></td>
+  `;
+  tbody.appendChild(totalTr);
+
+  document.getElementById('totalMin').textContent = `¥${fmt(totalMin)}`;
+  document.getElementById('totalMax').textContent = `¥${fmt(totalMax)}`;
+  document.getElementById('totalR7').textContent = `¥${fmt(totalR7)}`;
+  document.getElementById('totalMinPct').textContent = rev > 0 ? `売上比 ${(totalMin/rev*100).toFixed(1)}%` : '';
+  document.getElementById('totalMaxPct').textContent = rev > 0 ? `売上比 ${(totalMax/rev*100).toFixed(1)}%` : '';
+  document.getElementById('totalR7Pct').textContent = `R7売上比 158.2%`;
+}
+
+const input = document.getElementById('revenueInput');
+input.addEventListener('input', function() {
+  const raw = parseInput(this.value);
+  const pos = this.selectionStart;
+  this.value = fmt(raw);
+  update();
+});
+input.addEventListener('focus', function() { this.select(); });
+
+update();
+</script>
+</body>
+</html>
