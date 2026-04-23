@@ -3,427 +3,266 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>副業コンサル・街ガイド 経費シミュレーター 2026</title>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<title>経費シミュレーター 2026 | コンサル×街ガイド</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
 <style>
-  :root {
-    --bg: #0a0e17;
-    --surface: #131925;
-    --surface2: #1a2235;
-    --border: #2a3550;
-    --text: #e2e8f0;
-    --text-dim: #8892a8;
-    --accent: #38bdf8;
-    --accent2: #818cf8;
-    --green: #34d399;
-    --yellow: #fbbf24;
-    --red: #f87171;
-    --orange: #fb923c;
-  }
-  * { margin:0; padding:0; box-sizing:border-box; }
-  body {
-    font-family: 'Noto Sans JP', sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    min-height: 100vh;
-    padding: 20px;
-  }
-  .container { max-width: 1100px; margin: 0 auto; }
+:root{
+  --p:#1a73e8;--sf:#fff;--sd:#f8f9fa;--sc:#f1f3f4;--sh:#e8eaed;
+  --on:#202124;--onv:#5f6368;--ol:#dadce0;--ov:#e8eaed;
+  --err:#d93025;--erb:#fce8e6;--ok:#1e8e3e;--okb:#e6f4ea;--wc:#e37400;--wb:#fef7e0;--ib:#e8f0fe;
+  --s1:0 1px 2px 0 rgba(60,64,67,.3),0 1px 3px 1px rgba(60,64,67,.15);
+  --r:8px;--rl:12px;--rf:9999px;
+  --fb:'Noto Sans JP',sans-serif;--fm:'JetBrains Mono',monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:var(--fb);background:var(--sd);color:var(--on);line-height:1.6;-webkit-font-smoothing:antialiased}
+.ctr{max-width:900px;margin:0 auto;padding:24px 16px}
+.hdr{text-align:center;padding:24px 0 18px}
+.hdr-ic{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:var(--rf);background:var(--ib);color:var(--p);font-size:22px;margin-bottom:8px}
+.hdr h1{font-size:21px;font-weight:700;letter-spacing:-.02em}
+.hdr p{font-size:13px;color:var(--onv);margin-top:2px}
+.card{background:var(--sf);border-radius:var(--rl);box-shadow:var(--s1);padding:20px 24px;margin-bottom:14px}
+.ct{font-size:12px;font-weight:500;color:var(--onv);letter-spacing:.04em;margin-bottom:14px;display:flex;align-items:center;gap:6px}
+.ct .material-icons-outlined{font-size:17px;color:var(--p)}
 
-  header {
-    text-align: center;
-    padding: 40px 0 30px;
-    position: relative;
-  }
-  header::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 50%;
-    transform: translateX(-50%);
-    width: 200px; height: 3px;
-    background: linear-gradient(90deg, var(--accent), var(--accent2));
-    border-radius: 2px;
-  }
-  h1 {
-    font-size: 1.6rem;
-    font-weight: 700;
-    letter-spacing: 0.05em;
-    background: linear-gradient(135deg, var(--accent), var(--accent2));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-  .subtitle {
-    color: var(--text-dim);
-    font-size: 0.85rem;
-    margin-top: 8px;
-    font-weight: 300;
-  }
+/* Controls */
+.ctrl-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.ctrl-item label{display:block;font-size:11px;color:var(--onv);margin-bottom:3px;font-weight:500}
+.ctrl-item input[type=text]{width:100%;border:1.5px solid var(--ol);border-radius:var(--r);padding:10px 36px 10px 14px;font-size:18px;font-family:var(--fm);font-weight:500;color:var(--on);background:var(--sf);outline:none;text-align:right;transition:border-color .2s,box-shadow .2s}
+.ctrl-item input[type=text]:focus{border-color:var(--p);box-shadow:0 0 0 2px rgba(26,115,232,.15)}
+.ctrl-item .u{position:absolute;right:12px;bottom:12px;font-size:13px;color:var(--onv)}
+.ctrl-item .pos{position:relative}
+.slider-row{display:flex;align-items:center;gap:12px;margin-top:6px}
+.slider-row input[type=range]{flex:1;-webkit-appearance:none;appearance:none;height:6px;background:var(--sh);border-radius:3px;outline:none}
+.slider-row input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;height:20px;border-radius:50%;background:var(--p);cursor:pointer;box-shadow:0 1px 3px rgba(0,0,0,.25)}
+.slider-row input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:50%;background:var(--p);cursor:pointer;border:none}
+.rate-display{font-family:var(--fm);font-size:22px;font-weight:700;color:var(--p);min-width:56px;text-align:right}
+.man-chip{font-family:var(--fm);font-size:12px;color:var(--onv);background:var(--sc);padding:6px 12px;border-radius:var(--rf);margin-top:8px;display:inline-block}
 
-  .revenue-input-area {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    padding: 28px 32px;
-    margin: 24px 0;
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    flex-wrap: wrap;
-  }
-  .revenue-label {
-    font-size: 0.9rem;
-    font-weight: 500;
-    color: var(--text-dim);
-    white-space: nowrap;
-  }
-  .revenue-input-wrapper {
-    position: relative;
-    flex: 1;
-    min-width: 200px;
-  }
-  .revenue-input-wrapper input {
-    width: 100%;
-    background: var(--bg);
-    border: 2px solid var(--accent);
-    border-radius: 10px;
-    padding: 14px 50px 14px 20px;
-    font-size: 1.6rem;
-    font-family: 'JetBrains Mono', monospace;
-    font-weight: 600;
-    color: var(--accent);
-    text-align: right;
-    outline: none;
-    transition: border-color 0.2s;
-  }
-  .revenue-input-wrapper input:focus { border-color: var(--accent2); }
-  .revenue-input-wrapper .unit {
-    position: absolute;
-    right: 16px; top: 50%;
-    transform: translateY(-50%);
-    color: var(--text-dim);
-    font-size: 0.9rem;
-  }
-  .revenue-display {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.85rem;
-    color: var(--text-dim);
-    background: var(--surface2);
-    padding: 8px 16px;
-    border-radius: 8px;
-  }
+/* Summary */
+.sg{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-bottom:14px}
+.mc{background:var(--sc);border-radius:var(--rl);padding:14px 16px;text-align:center}
+.mc-l{font-size:10px;font-weight:500;color:var(--onv);text-transform:uppercase;letter-spacing:.06em}
+.mc-v{font-family:var(--fm);font-size:19px;font-weight:500;margin-top:3px}
+.mc-s{font-size:10px;color:var(--onv);margin-top:1px}
 
-  .summary-cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 14px;
-    margin: 20px 0 28px;
-  }
-  .card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 20px;
-    text-align: center;
-  }
-  .card-label {
-    font-size: 0.75rem;
-    color: var(--text-dim);
-    margin-bottom: 6px;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-  }
-  .card-value {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 1.3rem;
-    font-weight: 600;
-  }
-  .card-sub {
-    font-size: 0.7rem;
-    color: var(--text-dim);
-    margin-top: 4px;
-  }
+/* Table */
+.tw{overflow-x:auto}
+table{width:100%;border-collapse:collapse}
+thead th{font-size:10px;font-weight:500;color:var(--onv);text-transform:uppercase;letter-spacing:.04em;padding:10px 8px;text-align:right;border-bottom:2px solid var(--ol);white-space:nowrap;background:var(--sf)}
+thead th:first-child{text-align:left;min-width:130px}
+thead th:nth-child(2){text-align:center}
+tbody td{padding:10px 8px;border-bottom:1px solid var(--ov);text-align:right;font-family:var(--fm);font-size:12px}
+tbody td:first-child{text-align:left;font-family:var(--fb);font-weight:500;font-size:13px}
+tbody td:nth-child(2){text-align:center}
+tbody tr:hover{background:var(--sd)}
+tbody tr.tot{background:var(--sc)}
+tbody tr.tot td{border-top:2px solid var(--p);border-bottom:none;font-weight:500}
+.ch{display:inline-flex;padding:2px 9px;border-radius:var(--rf);font-size:10px;font-weight:500;font-family:var(--fb);white-space:nowrap}
+.ch-ok{background:var(--okb);color:var(--ok)}
+.ch-w{background:var(--wb);color:var(--wc)}
+.ch-ng{background:var(--erb);color:var(--err)}
 
-  table {
-    width: 100%;
-    border-collapse: separate;
-    border-spacing: 0;
-    background: var(--surface);
-    border-radius: 14px;
-    overflow: hidden;
-    border: 1px solid var(--border);
-  }
-  thead th {
-    background: var(--surface2);
-    padding: 14px 12px;
-    font-size: 0.75rem;
-    font-weight: 500;
-    color: var(--text-dim);
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    text-align: right;
-    border-bottom: 1px solid var(--border);
-  }
-  thead th:first-child { text-align: left; }
-  thead th:nth-child(2) { text-align: center; }
-  tbody td {
-    padding: 12px;
-    font-size: 0.85rem;
-    border-bottom: 1px solid rgba(42,53,80,0.5);
-    text-align: right;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.8rem;
-  }
-  tbody td:first-child {
-    text-align: left;
-    font-family: 'Noto Sans JP', sans-serif;
-    font-weight: 500;
-    font-size: 0.85rem;
-  }
-  tbody td:nth-child(2) { text-align: center; }
-  tbody tr:last-child td { border-bottom: none; }
-  tbody tr:hover { background: rgba(56,189,248,0.04); }
-  tbody tr.total-row {
-    background: var(--surface2);
-    font-weight: 700;
-  }
-  tbody tr.total-row td { border-top: 2px solid var(--accent); }
+/* Bar */
+.bar-c{display:flex;align-items:center;gap:8px;min-width:140px}
+.bw{flex:1;height:8px;background:var(--sh);border-radius:4px;position:relative;overflow:visible}
+.bt{position:absolute;top:0;left:0;height:8px;border-radius:4px;background:var(--p);opacity:.25;transition:width .3s}
+.bv{position:absolute;top:0;left:0;height:8px;border-radius:4px;transition:width .3s}
+.bp{font-family:var(--fm);font-size:10px;color:var(--onv);min-width:36px;text-align:right}
 
-  .badge {
-    display: inline-block;
-    padding: 3px 10px;
-    border-radius: 20px;
-    font-size: 0.7rem;
-    font-weight: 600;
-    font-family: 'Noto Sans JP', sans-serif;
-  }
-  .badge-ok { background: rgba(52,211,153,0.15); color: var(--green); }
-  .badge-warn { background: rgba(251,191,36,0.15); color: var(--yellow); }
-  .badge-high { background: rgba(248,113,113,0.15); color: var(--red); }
-
-  .bar-cell { position: relative; min-width: 120px; }
-  .bar-bg {
-    position: absolute;
-    left: 0; top: 50%;
-    transform: translateY(-50%);
-    height: 6px;
-    background: rgba(255,255,255,0.06);
-    width: 100%;
-    border-radius: 3px;
-  }
-  .bar-fill {
-    position: absolute;
-    left: 0; top: 50%;
-    transform: translateY(-50%);
-    height: 6px;
-    border-radius: 3px;
-    transition: width 0.4s ease;
-  }
-
-  .r7-col {
-    color: var(--accent) !important;
-    font-weight: 600 !important;
-  }
-
-  .notes {
-    margin-top: 24px;
-    padding: 20px 24px;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    font-size: 0.8rem;
-    color: var(--text-dim);
-    line-height: 1.7;
-  }
-  .notes strong { color: var(--text); }
-
-  @media (max-width: 768px) {
-    .revenue-input-area { flex-direction: column; }
-    .revenue-input-wrapper input { font-size: 1.2rem; }
-    table { font-size: 0.75rem; }
-    thead th, tbody td { padding: 8px 6px; }
-  }
+/* Share */
+.sb{display:flex;align-items:center;gap:8px;margin-top:16px;padding-top:14px;border-top:1px solid var(--ov);flex-wrap:wrap}
+.sb label{font-size:11px;color:var(--onv);font-weight:500;white-space:nowrap;display:flex;align-items:center;gap:4px}
+.sb label .material-icons-outlined{font-size:15px}
+.su{flex:1;min-width:160px;border:1px solid var(--ol);border-radius:var(--r);padding:7px 10px;font-size:11px;font-family:var(--fm);color:var(--onv);background:var(--sd);outline:none}
+.bc{display:inline-flex;align-items:center;gap:4px;padding:7px 14px;border:1.5px solid var(--p);border-radius:var(--rf);background:transparent;color:var(--p);font-size:12px;font-weight:500;font-family:var(--fb);cursor:pointer;transition:background .15s;white-space:nowrap}
+.bc:hover{background:var(--ib)}
+.bc .material-icons-outlined{font-size:15px}
+.fn{margin-top:14px;font-size:11px;color:var(--onv);line-height:1.8;padding:14px 18px;background:var(--sc);border-radius:var(--rl)}
+.fn strong{color:var(--on)}
+@media(max-width:640px){.ctr{padding:14px 10px}.card{padding:14px 16px}.ctrl-grid{grid-template-columns:1fr}.sg{grid-template-columns:1fr 1fr}}
 </style>
 </head>
 <body>
-<div class="container">
-  <header>
-    <h1>副業コンサル・街ガイド 経費シミュレーター</h1>
-    <div class="subtitle">2026年度 経費計画 — 売上に連動した適正経費範囲を自動計算</div>
-  </header>
-
-  <div class="revenue-input-area">
-    <div class="revenue-label">📊 年間売上高（予定）</div>
-    <div class="revenue-input-wrapper">
-      <input type="text" id="revenueInput" value="6,500,000" inputmode="numeric">
-      <span class="unit">円</span>
-    </div>
-    <div class="revenue-display" id="revenueMan"></div>
+<div class="ctr">
+  <div class="hdr">
+    <div class="hdr-ic"><span class="material-icons-outlined">analytics</span></div>
+    <h1>経費シミュレーター 2026</h1>
+    <p>コンサル × 街ガイド ハイブリッド型</p>
   </div>
 
-  <div class="summary-cards">
-    <div class="card">
-      <div class="card-label">経費MIN合計</div>
-      <div class="card-value" id="totalMin" style="color:var(--green)">—</div>
-      <div class="card-sub" id="totalMinPct"></div>
-    </div>
-    <div class="card">
-      <div class="card-label">経費MAX合計</div>
-      <div class="card-value" id="totalMax" style="color:var(--yellow)">—</div>
-      <div class="card-sub" id="totalMaxPct"></div>
-    </div>
-    <div class="card">
-      <div class="card-label">R7実績 経費合計</div>
-      <div class="card-value" id="totalR7" style="color:var(--accent)">—</div>
-      <div class="card-sub" id="totalR7Pct"></div>
-    </div>
-    <div class="card">
-      <div class="card-label">推奨経費率</div>
-      <div class="card-value" style="color:var(--accent2)">60〜80%</div>
-      <div class="card-sub">黒字化の目安</div>
+  <div class="card">
+    <div class="ct"><span class="material-icons-outlined">tune</span>シミュレーション条件</div>
+    <div class="ctrl-grid">
+      <div class="ctrl-item">
+        <label>年間売上高（予定）</label>
+        <div class="pos">
+          <input type="text" id="ri" value="6,500,000" inputmode="numeric">
+          <span class="u">円</span>
+        </div>
+        <div class="man-chip" id="rm"></div>
+      </div>
+      <div class="ctrl-item">
+        <label>目標経費率</label>
+        <div class="slider-row">
+          <input type="range" id="rateSlider" min="30" max="70" value="55" step="1">
+          <div class="rate-display" id="rateDisp">55%</div>
+        </div>
+        <div class="man-chip" id="budgetChip"></div>
+      </div>
     </div>
   </div>
 
-  <table>
-    <thead>
-      <tr>
-        <th>経費科目</th>
-        <th>判定</th>
-        <th>MIN率</th>
-        <th>MIN金額</th>
-        <th>MAX率</th>
-        <th>MAX金額</th>
-        <th>R7実績</th>
-        <th style="min-width:100px">範囲</th>
-      </tr>
-    </thead>
-    <tbody id="tableBody"></tbody>
-  </table>
+  <div class="sg" id="sg"></div>
 
-  <div class="notes">
-    <strong>📌 注意事項</strong><br>
-    ・MIN/MAX率は、副業コンサル・街ガイド事業（売上150〜650万円規模）の一般的な適正範囲です。<br>
-    ・R7実績は令和7年（Rev7最終版）の決算データに基づきます。<br>
-    ・売上が増加すると経費の絶対額も増えますが、経費率は低下するのが理想です。<br>
-    ・<strong>2026年の最優先目標は黒字化</strong>です。経費率80%以下を目指しましょう。<br>
-    ・減価償却費は車両（定額法6年）のみの継続分で大幅に減少する見込みです。
+  <div class="card">
+    <div class="ct"><span class="material-icons-outlined">table_chart</span>費目別シミュレーション</div>
+    <div class="tw">
+      <table>
+        <thead><tr>
+          <th>経費科目</th>
+          <th>判定</th>
+          <th>適正値</th>
+          <th>R7実績</th>
+          <th>比較</th>
+        </tr></thead>
+        <tbody id="tb"></tbody>
+      </table>
+    </div>
+    <div class="sb">
+      <label><span class="material-icons-outlined">link</span>保存URL</label>
+      <input type="text" class="su" id="surl" readonly>
+      <button class="bc" id="bcopy"><span class="material-icons-outlined">content_copy</span>コピー</button>
+    </div>
+  </div>
+
+  <div class="fn">
+    <strong>算定根拠</strong><br>
+    コンサルタント（経費率30〜50%）とツアーガイド（経費率40〜60%）の市場平均を基にハイブリッド型の適正経費率を設定。各費目の配分率は両業種の特性に応じて按分。R7実績は令和7年Rev7最終版（売上1,209,631円）に基づく。経費率はスライダーで30〜70%の範囲で調整可能。
   </div>
 </div>
 
 <script>
-const expenses = [
-  { name: "租税公課",         minPct: 0.8, maxPct: 3.0,  r7: 33761  },
-  { name: "水道光熱費",       minPct: 0.8, maxPct: 3.0,  r7: 48974  },
-  { name: "旅費交通費",       minPct: 3.0, maxPct: 10.0, r7: 89482  },
-  { name: "通信費",           minPct: 1.5, maxPct: 5.0,  r7: 53407  },
-  { name: "接待交際費",       minPct: 1.5, maxPct: 7.0,  r7: 107999 },
-  { name: "消耗品費",         minPct: 1.0, maxPct: 8.0,  r7: 252830 },
-  { name: "減価償却費",       minPct: 0.5, maxPct: 8.0,  r7: 337662 },
-  { name: "外注工賃",         minPct: 3.0, maxPct: 20.0, r7: 473991 },
-  { name: "地代家賃",         minPct: 1.5, maxPct: 5.0,  r7: 57584  },
-  { name: "ソフトウェア利用料", minPct: 2.0, maxPct: 12.0, r7: 204688 },
-  { name: "車両費",           minPct: 1.0, maxPct: 6.0,  r7: 126670 },
-  { name: "会議費",           minPct: 0.5, maxPct: 4.0,  r7: 84366  },
-  { name: "調査費",           minPct: 0.0, maxPct: 3.0,  r7: 40120  },
-  { name: "新聞図書費",       minPct: 0.3, maxPct: 2.0,  r7: 15041  },
-  { name: "支払手数料",       minPct: 0.0, maxPct: 1.0,  r7: 527    },
-  { name: "雑費",             minPct: 0.0, maxPct: 1.0,  r7: 0      },
+const D=[
+  {n:"租税公課",       pct:2.0, r7:33761},
+  {n:"水道光熱費",     pct:2.0, r7:48974},
+  {n:"旅費交通費",     pct:9.0, r7:89482},
+  {n:"通信費",         pct:4.5, r7:53407},
+  {n:"接待交際費",     pct:5.5, r7:107999},
+  {n:"消耗品費",       pct:3.0, r7:252830},
+  {n:"減価償却費",     pct:2.0, r7:337662},
+  {n:"外注工賃",       pct:9.0, r7:473991},
+  {n:"地代家賃",       pct:4.5, r7:57584},
+  {n:"ソフトウェア利用料",pct:6.5, r7:204688},
+  {n:"車両費",         pct:4.0, r7:126670},
+  {n:"会議費",         pct:3.0, r7:84366},
+  {n:"調査費",         pct:3.0, r7:40120},
+  {n:"新聞図書費",     pct:1.5, r7:15041},
+  {n:"支払手数料",     pct:0.5, r7:527},
+  {n:"雑費",           pct:0.0, r7:0},
 ];
+const BASE_SUM=D.reduce((a,e)=>a+e.pct,0);
 
-function fmt(n) {
-  return Math.round(n).toLocaleString('ja-JP');
+function fmt(n){return Math.round(n).toLocaleString("ja-JP")}
+function ps(v){return parseInt(v.replace(/[^0-9]/g,""),10)||0}
+
+function gp(){
+  const p=new URLSearchParams(location.search);
+  return{
+    rev:p.has("rev")?parseInt(p.get("rev"),10):null,
+    rate:p.has("rate")?parseInt(p.get("rate"),10):null
+  };
+}
+function burl(rev,rate){
+  const u=new URL(location.href.split("?")[0]);
+  u.searchParams.set("rev",rev);
+  u.searchParams.set("rate",rate);
+  return u.toString();
 }
 
-function parseInput(val) {
-  return parseInt(val.replace(/[^0-9]/g, ''), 10) || 0;
-}
+function render(){
+  const rev=ps(document.getElementById("ri").value);
+  const rate=parseInt(document.getElementById("rateSlider").value,10);
+  const scale=rate/55;
 
-function update() {
-  const rev = parseInput(document.getElementById('revenueInput').value);
-  const man = (rev / 10000).toFixed(1);
-  document.getElementById('revenueMan').textContent = `${man} 万円`;
+  document.getElementById("rateDisp").textContent=rate+"%";
+  document.getElementById("rm").textContent=(rev/10000).toFixed(1)+" 万円";
+  const budget=rev*rate/100;
+  document.getElementById("budgetChip").textContent="経費予算 ¥"+fmt(budget);
 
-  let totalMin = 0, totalMax = 0, totalR7 = 0;
-  const tbody = document.getElementById('tableBody');
-  tbody.innerHTML = '';
+  let sTg=0,sR7=0;
+  D.forEach(e=>{sTg+=rev*(e.pct*scale)/100;sR7+=e.r7});
 
-  expenses.forEach(e => {
-    const minVal = rev * e.minPct / 100;
-    const maxVal = rev * e.maxPct / 100;
-    totalMin += minVal;
-    totalMax += maxVal;
-    totalR7 += e.r7;
+  document.getElementById("sg").innerHTML=[
+    {l:"目標経費総額",v:"¥"+fmt(budget),s:"売上 × "+rate+"%",c:"var(--p)"},
+    {l:"費目配分合計",v:"¥"+fmt(sTg),s:rev?"売上比 "+(sTg/rev*100).toFixed(1)+"%":"",c:"var(--ok)"},
+    {l:"R7実績 (参考)",v:"¥"+fmt(sR7),s:"売上比 158.2%",c:"var(--err)"},
+    {l:"R7→目標 削減額",v:"¥"+fmt(Math.max(sR7-budget,0)),s:sR7>budget?"要削減":"達成済み",c:sR7>budget?"var(--wc)":"var(--ok)"},
+  ].map(m=>`<div class="mc"><div class="mc-l">${m.l}</div><div class="mc-v" style="color:${m.c}">${m.v}</div><div class="mc-s">${m.s}</div></div>`).join("");
 
-    let badge, badgeClass;
-    if (e.r7 <= maxVal * 1.0 && e.r7 >= 0) {
-      if (e.r7 <= maxVal * 0.85) {
-        badge = '適正'; badgeClass = 'badge-ok';
-      } else {
-        badge = '注意'; badgeClass = 'badge-warn';
-      }
-    } else {
-      badge = '要確認'; badgeClass = 'badge-high';
-    }
-    // For R7, scale was 1.2M revenue so adjust badge based on that context
-    // Just show the raw comparison for simplicity
+  const tb=document.getElementById("tb");
+  tb.innerHTML="";
+  let tTg=0,tR7=0;
+  const maxBar=rev*0.12||1;
 
-    const barMax = rev * 0.25; // scale bar to 25% of revenue
-    const minW = Math.min((minVal / barMax) * 100, 100);
-    const maxW = Math.min((maxVal / barMax) * 100, 100);
+  D.forEach(e=>{
+    const adjPct=e.pct*scale;
+    const tg=rev*adjPct/100;
+    tTg+=tg;tR7+=e.r7;
 
-    const barColor = badgeClass === 'badge-ok' ? 'var(--green)' :
-                     badgeClass === 'badge-warn' ? 'var(--yellow)' : 'var(--red)';
+    let ch,cl;
+    const diff=e.r7-tg;
+    if(tg===0&&e.r7===0){ch="—";cl="ch-ok"}
+    else if(e.r7<=tg*1.1){ch="適正";cl="ch-ok"}
+    else if(e.r7<=tg*1.5){ch="注意";cl="ch-w"}
+    else{ch="超過";cl="ch-ng"}
 
-    const tr = document.createElement('tr');
-    tr.innerHTML = `
-      <td>${e.name}</td>
-      <td><span class="badge ${badgeClass}">${badge}</span></td>
-      <td>${e.minPct.toFixed(1)}%</td>
-      <td>${fmt(minVal)}</td>
-      <td>${e.maxPct.toFixed(1)}%</td>
-      <td>${fmt(maxVal)}</td>
-      <td class="r7-col">${fmt(e.r7)}</td>
-      <td class="bar-cell">
-        <div class="bar-bg"></div>
-        <div class="bar-fill" style="width:${maxW}%;background:rgba(255,255,255,0.1)"></div>
-        <div class="bar-fill" style="width:${minW}%;background:${barColor};opacity:0.7"></div>
-      </td>
-    `;
-    tbody.appendChild(tr);
+    const bTg=Math.min(tg/maxBar*100,100);
+    const bR7=Math.min(e.r7/maxBar*100,100);
+    const r7color=e.r7>tg*1.1?"var(--err)":"var(--ok)";
+
+    const tr=document.createElement("tr");
+    tr.innerHTML=`<td>${e.n}</td>
+      <td><span class="ch ${cl}">${ch}</span></td>
+      <td style="color:var(--p);font-weight:500">${fmt(tg)}<span style="font-size:10px;color:var(--onv);font-weight:400;margin-left:4px">${adjPct.toFixed(1)}%</span></td>
+      <td>${fmt(e.r7)}</td>
+      <td><div class="bar-c">
+        <div class="bw">
+          <div class="bt" style="width:${bTg}%"></div>
+          <div class="bv" style="width:${bR7}%;background:${r7color};opacity:.5"></div>
+        </div>
+        <div class="bp">${e.r7>0&&tg>0?(e.r7>tg?"+"+(((e.r7-tg)/tg*100)|0)+"%":"-"+(((tg-e.r7)/tg*100)|0)+"%"):"—"}</div>
+      </div></td>`;
+    tb.appendChild(tr);
   });
 
-  // Total row
-  const totalTr = document.createElement('tr');
-  totalTr.className = 'total-row';
-  totalTr.innerHTML = `
-    <td>合計</td>
-    <td></td>
-    <td></td>
-    <td>${fmt(totalMin)}</td>
-    <td></td>
-    <td>${fmt(totalMax)}</td>
-    <td class="r7-col">${fmt(totalR7)}</td>
-    <td></td>
-  `;
-  tbody.appendChild(totalTr);
+  const tr2=document.createElement("tr");tr2.className="tot";
+  tr2.innerHTML=`<td>合計</td><td></td>
+    <td style="color:var(--p);font-weight:500">${fmt(tTg)}</td>
+    <td>${fmt(tR7)}</td><td></td>`;
+  tb.appendChild(tr2);
 
-  document.getElementById('totalMin').textContent = `¥${fmt(totalMin)}`;
-  document.getElementById('totalMax').textContent = `¥${fmt(totalMax)}`;
-  document.getElementById('totalR7').textContent = `¥${fmt(totalR7)}`;
-  document.getElementById('totalMinPct').textContent = rev > 0 ? `売上比 ${(totalMin/rev*100).toFixed(1)}%` : '';
-  document.getElementById('totalMaxPct').textContent = rev > 0 ? `売上比 ${(totalMax/rev*100).toFixed(1)}%` : '';
-  document.getElementById('totalR7Pct').textContent = `R7売上比 158.2%`;
+  document.getElementById("surl").value=burl(rev,rate);
 }
 
-const input = document.getElementById('revenueInput');
-input.addEventListener('input', function() {
-  const raw = parseInput(this.value);
-  const pos = this.selectionStart;
-  this.value = fmt(raw);
-  update();
-});
-input.addEventListener('focus', function() { this.select(); });
+const prm=gp();
+if(prm.rev)document.getElementById("ri").value=fmt(prm.rev);
+if(prm.rate)document.getElementById("rateSlider").value=prm.rate;
 
-update();
+const inp=document.getElementById("ri");
+inp.addEventListener("input",function(){this.value=fmt(ps(this.value));render()});
+inp.addEventListener("focus",function(){this.select()});
+document.getElementById("rateSlider").addEventListener("input",render);
+
+document.getElementById("bcopy").addEventListener("click",function(){
+  navigator.clipboard.writeText(document.getElementById("surl").value).then(()=>{
+    this.innerHTML='<span class="material-icons-outlined" style="font-size:15px">check</span>コピー済み';
+    setTimeout(()=>{this.innerHTML='<span class="material-icons-outlined" style="font-size:15px">content_copy</span>コピー'},2000);
+  });
+});
+
+render();
 </script>
 </body>
 </html>
