@@ -25,7 +25,6 @@ body{font-family:var(--fb);background:var(--sd);color:var(--on);line-height:1.6;
 .card{background:var(--sf);border-radius:var(--rl);box-shadow:var(--s1);padding:20px 24px;margin-bottom:14px}
 .ct{font-size:13px;font-weight:500;color:var(--onv);letter-spacing:.04em;margin-bottom:14px;display:flex;align-items:center;gap:6px}
 .ct .material-icons-outlined{font-size:17px;color:var(--p)}
-
 .ctrl-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 .ctrl-item label{display:block;font-size:12px;color:var(--onv);margin-bottom:3px;font-weight:500}
 .ctrl-item .pos{position:relative}
@@ -38,38 +37,42 @@ body{font-family:var(--fb);background:var(--sd);color:var(--on);line-height:1.6;
 .sr input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:50%;background:var(--p);cursor:pointer;border:none}
 .rd{font-family:var(--fm);font-size:22px;font-weight:700;color:var(--p);min-width:56px;text-align:right}
 .chip{font-family:var(--fm);font-size:12px;color:var(--onv);background:var(--sc);padding:6px 12px;border-radius:var(--rf);margin-top:8px;display:inline-block}
-
 .sg{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-bottom:14px}
 .mc{background:var(--sc);border-radius:var(--rl);padding:14px 16px;text-align:center}
 .mc-l{font-size:10px;font-weight:500;color:var(--onv);text-transform:uppercase;letter-spacing:.06em}
 .mc-v{font-family:var(--fm);font-size:19px;font-weight:500;margin-top:3px}
 .mc-s{font-size:10px;color:var(--onv);margin-top:1px}
 
-/* Expense rows */
-.exp-list{display:flex;flex-direction:column;gap:0}
-.exp-row{display:grid;grid-template-columns:160px 1fr 110px 110px;align-items:center;gap:12px;padding:14px 0;border-bottom:1px solid var(--ov)}
-.exp-row:last-child{border-bottom:none}
-.exp-name{font-size:15px;font-weight:500}
-.exp-slider{display:flex;align-items:center;gap:8px}
-.exp-slider input[type=range]{flex:1;-webkit-appearance:none;appearance:none;height:5px;background:var(--sh);border-radius:3px;outline:none}
-.exp-slider input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:16px;height:16px;border-radius:50%;background:var(--p);cursor:pointer;box-shadow:0 1px 2px rgba(0,0,0,.2)}
-.exp-slider input[type=range]::-moz-range-thumb{width:16px;height:16px;border-radius:50%;background:var(--p);cursor:pointer;border:none}
-.exp-val{font-family:var(--fm);font-size:18px;font-weight:500;text-align:right;color:var(--p)}
-.exp-r7{font-family:var(--fm);font-size:18px;text-align:right;color:var(--onv)}
-.exp-hdr{display:grid;grid-template-columns:160px 1fr 110px 110px;gap:12px;padding:10px 0;border-bottom:2px solid var(--ol)}
-.exp-hdr span{font-size:12px;font-weight:500;color:var(--onv);text-transform:uppercase;letter-spacing:.04em}
-.exp-hdr span:nth-child(3),.exp-hdr span:nth-child(4){text-align:right}
-.exp-total{display:grid;grid-template-columns:160px 1fr 110px 110px;gap:12px;padding:14px 0;border-top:2px solid var(--p);background:var(--sc);margin:0 -24px;padding:14px 24px}
-.exp-total span{font-size:16px;font-weight:700}
-.exp-total span:nth-child(3),.exp-total span:nth-child(4){text-align:right;font-family:var(--fm)}
-.pct-label{font-family:var(--fm);font-size:11px;color:var(--onv);min-width:44px;text-align:right}
-
-/* Gauge */
 .gauge-bar{height:10px;background:var(--sh);border-radius:5px;position:relative;margin:10px 0 4px;overflow:hidden}
 .gauge-fill{height:10px;border-radius:5px;transition:width .3s,background .3s}
 .gauge-labels{display:flex;justify-content:space-between;font-size:11px;color:var(--onv)}
 
-/* Share */
+.exp-hdr{display:grid;grid-template-columns:140px 1fr 100px 100px;gap:12px;padding:10px 0;border-bottom:2px solid var(--ol)}
+.exp-hdr span{font-size:12px;font-weight:500;color:var(--onv);text-transform:uppercase;letter-spacing:.04em}
+.exp-hdr span:nth-child(3),.exp-hdr span:nth-child(4){text-align:right}
+
+.exp-row{display:grid;grid-template-columns:140px 1fr 100px 100px;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--ov)}
+.exp-row:last-child{border-bottom:none}
+.exp-name{font-size:14px;font-weight:500}
+
+.slider-wrap{position:relative;padding-bottom:16px}
+.slider-track{position:relative;width:100%;height:28px}
+.slider-track input[type=range]{width:100%;-webkit-appearance:none;appearance:none;height:6px;background:var(--sh);border-radius:3px;outline:none;position:relative;z-index:2;margin:0}
+.slider-track input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:18px;border-radius:50%;background:var(--p);cursor:pointer;box-shadow:0 1px 3px rgba(0,0,0,.25)}
+.slider-track input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;background:var(--p);cursor:pointer;border:none}
+.mark{position:absolute;top:0;width:2px;height:6px;border-radius:1px;z-index:1}
+.mark-zone{position:absolute;top:0;height:6px;border-radius:3px;z-index:0}
+.mark-labels{display:flex;justify-content:space-between;position:absolute;bottom:0;left:0;right:0;font-size:9px;color:var(--onv);pointer-events:none}
+.mark-center{position:absolute;bottom:0;font-size:9px;color:var(--p);font-weight:500;pointer-events:none;transform:translateX(-50%);white-space:nowrap}
+
+.exp-val{font-family:var(--fm);font-size:16px;font-weight:500;text-align:right;color:var(--p)}
+.exp-r7{font-family:var(--fm);font-size:16px;text-align:right;color:var(--onv)}
+.exp-fixed{font-size:11px;color:var(--onv);font-style:italic}
+
+.exp-total{display:grid;grid-template-columns:140px 1fr 100px 100px;gap:12px;padding:14px 24px;border-top:2px solid var(--p);background:var(--sc);margin:0 -24px}
+.exp-total span{font-size:15px;font-weight:700}
+.exp-total span:nth-child(3),.exp-total span:nth-child(4){text-align:right;font-family:var(--fm)}
+
 .sb{display:flex;align-items:center;gap:8px;margin-top:16px;padding-top:14px;border-top:1px solid var(--ov);flex-wrap:wrap}
 .sb label{font-size:11px;color:var(--onv);font-weight:500;white-space:nowrap;display:flex;align-items:center;gap:4px}
 .sb label .material-icons-outlined{font-size:15px}
@@ -84,8 +87,8 @@ body{font-family:var(--fb);background:var(--sd);color:var(--on);line-height:1.6;
 @media(max-width:640px){
   .ctr{padding:14px 10px}.card{padding:16px}
   .ctrl-grid{grid-template-columns:1fr}
-  .exp-row,.exp-hdr,.exp-total{grid-template-columns:120px 1fr 90px 90px;gap:8px}
-  .exp-name{font-size:13px}.exp-val,.exp-r7{font-size:15px}
+  .exp-row,.exp-hdr,.exp-total{grid-template-columns:110px 1fr 85px 85px;gap:8px}
+  .exp-name{font-size:12px}.exp-val,.exp-r7{font-size:14px}
   .sg{grid-template-columns:1fr 1fr}
 }
 </style>
@@ -97,7 +100,6 @@ body{font-family:var(--fb);background:var(--sd);color:var(--on);line-height:1.6;
     <h1>経費シミュレーター 2026</h1>
     <p>コンサル × 街ガイド ハイブリッド型 ― 各費目をスライダーで調整</p>
   </div>
-
   <div class="card">
     <div class="ct"><span class="material-icons-outlined">tune</span>シミュレーション条件</div>
     <div class="ctrl-grid">
@@ -119,11 +121,9 @@ body{font-family:var(--fb);background:var(--sd);color:var(--on);line-height:1.6;
       </div>
     </div>
   </div>
-
   <div class="sg" id="sg"></div>
-
   <div class="card">
-    <div class="ct"><span class="material-icons-outlined">edit_note</span>費目別シミュレーション ― スライダーで調整</div>
+    <div class="ct"><span class="material-icons-outlined">edit_note</span>費目別シミュレーション</div>
     <div class="gauge-bar"><div class="gauge-fill" id="gaugeFill"></div></div>
     <div class="gauge-labels"><span id="gaugeUsed"></span><span id="gaugeBudget"></span></div>
     <div class="exp-hdr">
@@ -132,9 +132,8 @@ body{font-family:var(--fb);background:var(--sd);color:var(--on);line-height:1.6;
       <span style="text-align:right">R8 適正値</span>
       <span style="text-align:right">R7 実績</span>
     </div>
-    <div class="exp-list" id="expList"></div>
+    <div id="expList"></div>
     <div class="exp-total" id="expTotal"></div>
-
     <div class="sb">
       <label><span class="material-icons-outlined">link</span>保存URL</label>
       <input type="text" class="su" id="surl" readonly>
@@ -142,34 +141,42 @@ body{font-family:var(--fb);background:var(--sd);color:var(--on);line-height:1.6;
       <button class="bc btn-reset" id="breset"><span class="material-icons-outlined">restart_alt</span>リセット</button>
     </div>
   </div>
-
   <div class="fn">
-    <strong>使い方</strong><br>
-    各費目のスライダーを動かしてR8年度の経費計画を作成できます。上部のゲージバーで経費合計が目標率に収まっているか確認できます。「保存URL」をコピーすれば、設定した金額を再現できます。<br><br>
+    <strong>スライダーの見方</strong><br>
+    緑ゾーンが適正範囲（min〜max）、中央の青線が適正値です。スライダーを動かして各費目のR8計画値を設定してください。<br><br>
     <strong>算定根拠</strong><br>
-    減価償却費はトヨタ クラウンクロスオーバー（取得価額6,380,940円×償却率0.167×33.3%＝354,850円/年）を固定計上。地代家賃はR7実績（57,584円）を継続。その他の費目はハイブリッド型（コンサル×ガイド）の市場平均経費率を基に初期値を設定。
+    減価償却費はトヨタ クラウンクロスオーバー（取得価額6,380,940円×償却率0.167×33.3%＝354,850円/年）を固定計上。地代家賃はR7実績（57,584円）を継続。その他費目の適正値はハイブリッド型（コンサル×ガイド）の市場平均を基に設定。
   </div>
 </div>
-
 <script>
 const D=[
-  {id:"tax",     n:"租税公課",          def:35000,   min:0,max:200000,  step:1000, r7:33761},
-  {id:"util",    n:"水道光熱費",        def:50000,   min:0,max:200000,  step:1000, r7:48974},
-  {id:"travel",  n:"旅費交通費",        def:300000,  min:0,max:600000,  step:5000, r7:89482},
-  {id:"comm",    n:"通信費",            def:160000,  min:0,max:300000,  step:5000, r7:53407},
-  {id:"ent",     n:"接待交際費",        def:200000,  min:0,max:500000,  step:5000, r7:107999},
-  {id:"supply",  n:"消耗品費",          def:100000,  min:0,max:400000,  step:5000, r7:252830},
-  {id:"depr",    n:"減価償却費",        def:354850,  min:354850,max:354850,step:1,r7:337662,fixed:true},
-  {id:"outsrc",  n:"外注工賃",          def:500000,  min:0,max:1000000, step:10000,r7:473991},
-  {id:"rent",    n:"地代家賃",          def:57584,   min:57584,max:57584,step:1,  r7:57584,fixed:true},
-  {id:"sw",      n:"ソフトウェア利用料",def:250000,  min:0,max:500000,  step:5000, r7:204688},
-  {id:"car",     n:"車両費",            def:130000,  min:0,max:400000,  step:5000, r7:126670},
-  {id:"meet",    n:"会議費",            def:100000,  min:0,max:300000,  step:5000, r7:84366},
-  {id:"research",n:"調査費",            def:100000,  min:0,max:300000,  step:5000, r7:40120},
-  {id:"book",    n:"新聞図書費",        def:50000,   min:0,max:150000,  step:1000, r7:15041},
-  {id:"fee",     n:"支払手数料",        def:5000,    min:0,max:50000,   step:1000, r7:527},
-  {id:"misc",    n:"雑費",              def:0,       min:0,max:50000,   step:1000, r7:0},
+  {id:"tax",     n:"租税公課",          appMin:30000,  appVal:65000,  appMax:130000,  r7:33761},
+  {id:"util",    n:"水道光熱費",        appMin:30000,  appVal:60000,  appMax:120000,  r7:48974},
+  {id:"travel",  n:"旅費交通費",        appMin:150000, appVal:350000, appMax:500000,  r7:89482},
+  {id:"comm",    n:"通信費",            appMin:60000,  appVal:160000, appMax:250000,  r7:53407},
+  {id:"ent",     n:"接待交際費",        appMin:80000,  appVal:220000, appMax:350000,  r7:107999},
+  {id:"supply",  n:"消耗品費",          appMin:30000,  appVal:100000, appMax:200000,  r7:252830},
+  {id:"depr",    n:"減価償却費",        appMin:354850, appVal:354850, appMax:354850,  r7:337662, fixed:true},
+  {id:"outsrc",  n:"外注工賃",          appMin:150000, appVal:400000, appMax:600000,  r7:473991},
+  {id:"rent",    n:"地代家賃",          appMin:57584,  appVal:57584,  appMax:57584,   r7:57584,  fixed:true},
+  {id:"sw",      n:"ソフトウェア利用料",appMin:100000, appVal:250000, appMax:380000,  r7:204688},
+  {id:"car",     n:"車両費",            appMin:50000,  appVal:150000, appMax:250000,  r7:126670},
+  {id:"meet",    n:"会議費",            appMin:30000,  appVal:100000, appMax:180000,  r7:84366},
+  {id:"research",n:"調査費",            appMin:30000,  appVal:100000, appMax:200000,  r7:40120},
+  {id:"book",    n:"新聞図書費",        appMin:20000,  appVal:55000,  appMax:100000,  r7:15041},
+  {id:"fee",     n:"支払手数料",        appMin:0,      appVal:10000,  appMax:30000,   r7:527},
+  {id:"misc",    n:"雑費",              appMin:0,      appVal:0,      appMax:30000,   r7:0},
 ];
+
+D.forEach(e=>{
+  if(e.fixed){e.slMin=e.appVal;e.slMax=e.appVal;e.step=1;e.def=e.appVal;return}
+  const span=e.appMax-e.appMin;
+  e.slMin=Math.max(0,e.appVal-span);
+  e.slMax=e.appVal+span;
+  e.step=Math.max(1000,Math.round(span/20/1000)*1000);
+  if(e.step<1000)e.step=1000;
+  e.def=e.appVal;
+});
 
 const vals={};
 D.forEach(e=>{vals[e.id]=e.def});
@@ -192,38 +199,84 @@ function buildUrl(){
   return u.toString();
 }
 
+function pctPos(val,slMin,slMax){
+  if(slMax===slMin)return 50;
+  return((val-slMin)/(slMax-slMin))*100;
+}
+
 function buildExpRows(){
   const list=document.getElementById("expList");
   list.innerHTML="";
   D.forEach(e=>{
     const row=document.createElement("div");
     row.className="exp-row";
-    row.id="row-"+e.id;
 
     const nameEl=document.createElement("span");
     nameEl.className="exp-name";
     nameEl.textContent=e.n;
 
-    const sliderWrap=document.createElement("div");
-    sliderWrap.className="exp-slider";
+    const sliderCol=document.createElement("div");
     if(e.fixed){
-      const fixLabel=document.createElement("span");
-      fixLabel.style.cssText="font-size:12px;color:var(--onv);font-style:italic";
-      fixLabel.textContent="固定値";
-      sliderWrap.appendChild(fixLabel);
+      sliderCol.innerHTML='<span class="exp-fixed">固定値（自動計算）</span>';
     } else {
-      const slider=document.createElement("input");
-      slider.type="range";
-      slider.min=e.min;slider.max=e.max;slider.step=e.step;
-      slider.value=vals[e.id];
-      slider.id="sl-"+e.id;
-      slider.addEventListener("input",function(){vals[e.id]=parseInt(this.value,10);render()});
-      sliderWrap.appendChild(slider);
+      sliderCol.className="slider-wrap";
+      const track=document.createElement("div");
+      track.className="slider-track";
+
+      const zoneL=pctPos(e.appMin,e.slMin,e.slMax);
+      const zoneR=pctPos(e.appMax,e.slMin,e.slMax);
+      const zoneW=zoneR-zoneL;
+      const zone=document.createElement("div");
+      zone.className="mark-zone";
+      zone.style.cssText=`left:${zoneL}%;width:${zoneW}%;background:rgba(30,142,62,.15);border-radius:3px`;
+      track.appendChild(zone);
+
+      const markMin=document.createElement("div");
+      markMin.className="mark";
+      markMin.style.cssText=`left:${zoneL}%;background:var(--ok)`;
+      track.appendChild(markMin);
+
+      const centerPos=pctPos(e.appVal,e.slMin,e.slMax);
+      const markCenter=document.createElement("div");
+      markCenter.className="mark";
+      markCenter.style.cssText=`left:${centerPos}%;background:var(--p);width:3px;height:8px;top:-1px;z-index:1`;
+      track.appendChild(markCenter);
+
+      const markMax=document.createElement("div");
+      markMax.className="mark";
+      markMax.style.cssText=`left:${zoneR}%;background:var(--ok)`;
+      track.appendChild(markMax);
+
+      const sl=document.createElement("input");
+      sl.type="range";sl.min=e.slMin;sl.max=e.slMax;sl.step=e.step;
+      sl.value=vals[e.id];sl.id="sl-"+e.id;
+      sl.style.cssText="position:absolute;top:0;left:0;width:100%";
+      sl.addEventListener("input",function(){vals[e.id]=parseInt(this.value,10);render()});
+      track.appendChild(sl);
+
+      sliderCol.appendChild(track);
+
+      const labels=document.createElement("div");
+      labels.style.cssText="position:relative;height:14px;margin-top:2px";
+
+      const lbMin=document.createElement("span");
+      lbMin.style.cssText=`position:absolute;left:${zoneL}%;transform:translateX(-50%);font-size:9px;color:var(--onv)`;
+      lbMin.textContent="¥"+fmt(e.appMin);
+      labels.appendChild(lbMin);
+
+      const lbCenter=document.createElement("span");
+      lbCenter.className="mark-center";
+      lbCenter.style.left=centerPos+"%";
+      lbCenter.textContent="適正値";
+      labels.appendChild(lbCenter);
+
+      const lbMax=document.createElement("span");
+      lbMax.style.cssText=`position:absolute;left:${zoneR}%;transform:translateX(-50%);font-size:9px;color:var(--onv)`;
+      lbMax.textContent="¥"+fmt(e.appMax);
+      labels.appendChild(lbMax);
+
+      sliderCol.appendChild(labels);
     }
-    const pctLabel=document.createElement("span");
-    pctLabel.className="pct-label";
-    pctLabel.id="pct-"+e.id;
-    sliderWrap.appendChild(pctLabel);
 
     const valEl=document.createElement("span");
     valEl.className="exp-val";
@@ -234,7 +287,7 @@ function buildExpRows(){
     r7El.textContent="¥"+fmt(e.r7);
 
     row.appendChild(nameEl);
-    row.appendChild(sliderWrap);
+    row.appendChild(sliderCol);
     row.appendChild(valEl);
     row.appendChild(r7El);
     list.appendChild(row);
@@ -252,18 +305,13 @@ function render(){
 
   let total=0,sR7=0;
   D.forEach(e=>{
-    total+=vals[e.id];
-    sR7+=e.r7;
-    const pct=rev>0?((vals[e.id]/rev*100).toFixed(1)+"%"):"—";
-    document.getElementById("pct-"+e.id).textContent=pct;
+    total+=vals[e.id];sR7+=e.r7;
     document.getElementById("val-"+e.id).textContent="¥"+fmt(vals[e.id]);
-    if(!e.fixed){
-      const sl=document.getElementById("sl-"+e.id);
-      if(sl)sl.value=vals[e.id];
-    }
+    if(!e.fixed){const sl=document.getElementById("sl-"+e.id);if(sl)sl.value=vals[e.id]}
   });
 
   const totalPct=rev>0?(total/rev*100):0;
+  const r7Pct=rev>0?(sR7/rev*100):0;
   const overBudget=total>budget;
 
   const gf=document.getElementById("gaugeFill");
@@ -280,11 +328,10 @@ function render(){
     {l:"R7実績との差",v:"¥"+fmt(Math.abs(total-sR7)),s:total<sR7?"削減":"増加",c:total<sR7?"var(--ok)":"var(--wc)"},
   ].map(m=>`<div class="mc"><div class="mc-l">${m.l}</div><div class="mc-v" style="color:${m.c}">${m.v}</div><div class="mc-s">${m.s}</div></div>`).join("");
 
-  const r7Pct=rev>0?(sR7/rev*100):0;
   document.getElementById("expTotal").innerHTML=`
-    <span style="font-size:16px;font-weight:700">合計</span><span></span>
+    <span style="font-size:15px;font-weight:700">合計</span><span></span>
     <span style="text-align:right;font-family:var(--fm);color:${overBudget?'var(--err)':'var(--p)'}">¥${fmt(total)}<br><span style="font-size:13px;font-weight:700">(${totalPct.toFixed(1)}%)</span></span>
-    <span style="text-align:right;font-family:var(--fm);color:var(--onv)">¥${fmt(sR7)}<br><span style="font-size:13px;font-weight:500">(${r7Pct.toFixed(1)}%)</span></span>`;
+    <span style="text-align:right;font-family:var(--fm);color:var(--onv)">¥${fmt(sR7)}<br><span style="font-size:13px">(${(1913602/1209631*100).toFixed(1)}%)</span></span>`;
 
   document.getElementById("surl").value=buildUrl();
 }
