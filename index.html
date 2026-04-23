@@ -17,59 +17,57 @@
 }
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:var(--fb);background:var(--sd);color:var(--on);line-height:1.6;-webkit-font-smoothing:antialiased}
-.ctr{max-width:900px;margin:0 auto;padding:24px 16px}
+.ctr{max-width:960px;margin:0 auto;padding:24px 16px}
 .hdr{text-align:center;padding:24px 0 18px}
 .hdr-ic{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:var(--rf);background:var(--ib);color:var(--p);font-size:22px;margin-bottom:8px}
 .hdr h1{font-size:21px;font-weight:700;letter-spacing:-.02em}
 .hdr p{font-size:13px;color:var(--onv);margin-top:2px}
 .card{background:var(--sf);border-radius:var(--rl);box-shadow:var(--s1);padding:20px 24px;margin-bottom:14px}
-.ct{font-size:12px;font-weight:500;color:var(--onv);letter-spacing:.04em;margin-bottom:14px;display:flex;align-items:center;gap:6px}
+.ct{font-size:13px;font-weight:500;color:var(--onv);letter-spacing:.04em;margin-bottom:14px;display:flex;align-items:center;gap:6px}
 .ct .material-icons-outlined{font-size:17px;color:var(--p)}
 
-/* Controls */
 .ctrl-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-.ctrl-item label{display:block;font-size:11px;color:var(--onv);margin-bottom:3px;font-weight:500}
+.ctrl-item label{display:block;font-size:12px;color:var(--onv);margin-bottom:3px;font-weight:500}
+.ctrl-item .pos{position:relative}
 .ctrl-item input[type=text]{width:100%;border:1.5px solid var(--ol);border-radius:var(--r);padding:10px 36px 10px 14px;font-size:18px;font-family:var(--fm);font-weight:500;color:var(--on);background:var(--sf);outline:none;text-align:right;transition:border-color .2s,box-shadow .2s}
 .ctrl-item input[type=text]:focus{border-color:var(--p);box-shadow:0 0 0 2px rgba(26,115,232,.15)}
 .ctrl-item .u{position:absolute;right:12px;bottom:12px;font-size:13px;color:var(--onv)}
-.ctrl-item .pos{position:relative}
-.slider-row{display:flex;align-items:center;gap:12px;margin-top:6px}
-.slider-row input[type=range]{flex:1;-webkit-appearance:none;appearance:none;height:6px;background:var(--sh);border-radius:3px;outline:none}
-.slider-row input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;height:20px;border-radius:50%;background:var(--p);cursor:pointer;box-shadow:0 1px 3px rgba(0,0,0,.25)}
-.slider-row input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:50%;background:var(--p);cursor:pointer;border:none}
-.rate-display{font-family:var(--fm);font-size:22px;font-weight:700;color:var(--p);min-width:56px;text-align:right}
-.man-chip{font-family:var(--fm);font-size:12px;color:var(--onv);background:var(--sc);padding:6px 12px;border-radius:var(--rf);margin-top:8px;display:inline-block}
+.sr{display:flex;align-items:center;gap:12px;margin-top:6px}
+.sr input[type=range]{flex:1;-webkit-appearance:none;appearance:none;height:6px;background:var(--sh);border-radius:3px;outline:none}
+.sr input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;height:20px;border-radius:50%;background:var(--p);cursor:pointer;box-shadow:0 1px 3px rgba(0,0,0,.25)}
+.sr input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:50%;background:var(--p);cursor:pointer;border:none}
+.rd{font-family:var(--fm);font-size:22px;font-weight:700;color:var(--p);min-width:56px;text-align:right}
+.chip{font-family:var(--fm);font-size:12px;color:var(--onv);background:var(--sc);padding:6px 12px;border-radius:var(--rf);margin-top:8px;display:inline-block}
 
-/* Summary */
 .sg{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-bottom:14px}
 .mc{background:var(--sc);border-radius:var(--rl);padding:14px 16px;text-align:center}
 .mc-l{font-size:10px;font-weight:500;color:var(--onv);text-transform:uppercase;letter-spacing:.06em}
 .mc-v{font-family:var(--fm);font-size:19px;font-weight:500;margin-top:3px}
 .mc-s{font-size:10px;color:var(--onv);margin-top:1px}
 
-/* Table */
-.tw{overflow-x:auto}
-table{width:100%;border-collapse:collapse}
-thead th{font-size:10px;font-weight:500;color:var(--onv);text-transform:uppercase;letter-spacing:.04em;padding:10px 8px;text-align:right;border-bottom:2px solid var(--ol);white-space:nowrap;background:var(--sf)}
-thead th:first-child{text-align:left;min-width:130px}
-thead th:nth-child(2){text-align:center}
-tbody td{padding:10px 8px;border-bottom:1px solid var(--ov);text-align:right;font-family:var(--fm);font-size:12px}
-tbody td:first-child{text-align:left;font-family:var(--fb);font-weight:500;font-size:13px}
-tbody td:nth-child(2){text-align:center}
-tbody tr:hover{background:var(--sd)}
-tbody tr.tot{background:var(--sc)}
-tbody tr.tot td{border-top:2px solid var(--p);border-bottom:none;font-weight:500}
-.ch{display:inline-flex;padding:2px 9px;border-radius:var(--rf);font-size:10px;font-weight:500;font-family:var(--fb);white-space:nowrap}
-.ch-ok{background:var(--okb);color:var(--ok)}
-.ch-w{background:var(--wb);color:var(--wc)}
-.ch-ng{background:var(--erb);color:var(--err)}
+/* Expense rows */
+.exp-list{display:flex;flex-direction:column;gap:0}
+.exp-row{display:grid;grid-template-columns:160px 1fr 110px 110px;align-items:center;gap:12px;padding:14px 0;border-bottom:1px solid var(--ov)}
+.exp-row:last-child{border-bottom:none}
+.exp-name{font-size:15px;font-weight:500}
+.exp-slider{display:flex;align-items:center;gap:8px}
+.exp-slider input[type=range]{flex:1;-webkit-appearance:none;appearance:none;height:5px;background:var(--sh);border-radius:3px;outline:none}
+.exp-slider input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:16px;height:16px;border-radius:50%;background:var(--p);cursor:pointer;box-shadow:0 1px 2px rgba(0,0,0,.2)}
+.exp-slider input[type=range]::-moz-range-thumb{width:16px;height:16px;border-radius:50%;background:var(--p);cursor:pointer;border:none}
+.exp-val{font-family:var(--fm);font-size:18px;font-weight:500;text-align:right;color:var(--p)}
+.exp-r7{font-family:var(--fm);font-size:18px;text-align:right;color:var(--onv)}
+.exp-hdr{display:grid;grid-template-columns:160px 1fr 110px 110px;gap:12px;padding:10px 0;border-bottom:2px solid var(--ol)}
+.exp-hdr span{font-size:12px;font-weight:500;color:var(--onv);text-transform:uppercase;letter-spacing:.04em}
+.exp-hdr span:nth-child(3),.exp-hdr span:nth-child(4){text-align:right}
+.exp-total{display:grid;grid-template-columns:160px 1fr 110px 110px;gap:12px;padding:14px 0;border-top:2px solid var(--p);background:var(--sc);margin:0 -24px;padding:14px 24px}
+.exp-total span{font-size:16px;font-weight:700}
+.exp-total span:nth-child(3),.exp-total span:nth-child(4){text-align:right;font-family:var(--fm)}
+.pct-label{font-family:var(--fm);font-size:11px;color:var(--onv);min-width:44px;text-align:right}
 
-/* Bar */
-.bar-c{display:flex;align-items:center;gap:8px;min-width:140px}
-.bw{flex:1;height:8px;background:var(--sh);border-radius:4px;position:relative;overflow:visible}
-.bt{position:absolute;top:0;left:0;height:8px;border-radius:4px;background:var(--p);opacity:.25;transition:width .3s}
-.bv{position:absolute;top:0;left:0;height:8px;border-radius:4px;transition:width .3s}
-.bp{font-family:var(--fm);font-size:10px;color:var(--onv);min-width:36px;text-align:right}
+/* Gauge */
+.gauge-bar{height:10px;background:var(--sh);border-radius:5px;position:relative;margin:10px 0 4px;overflow:hidden}
+.gauge-fill{height:10px;border-radius:5px;transition:width .3s,background .3s}
+.gauge-labels{display:flex;justify-content:space-between;font-size:11px;color:var(--onv)}
 
 /* Share */
 .sb{display:flex;align-items:center;gap:8px;margin-top:16px;padding-top:14px;border-top:1px solid var(--ov);flex-wrap:wrap}
@@ -79,9 +77,17 @@ tbody tr.tot td{border-top:2px solid var(--p);border-bottom:none;font-weight:500
 .bc{display:inline-flex;align-items:center;gap:4px;padding:7px 14px;border:1.5px solid var(--p);border-radius:var(--rf);background:transparent;color:var(--p);font-size:12px;font-weight:500;font-family:var(--fb);cursor:pointer;transition:background .15s;white-space:nowrap}
 .bc:hover{background:var(--ib)}
 .bc .material-icons-outlined{font-size:15px}
+.btn-reset{border-color:var(--onv);color:var(--onv)}
+.btn-reset:hover{background:var(--sc)}
 .fn{margin-top:14px;font-size:11px;color:var(--onv);line-height:1.8;padding:14px 18px;background:var(--sc);border-radius:var(--rl)}
 .fn strong{color:var(--on)}
-@media(max-width:640px){.ctr{padding:14px 10px}.card{padding:14px 16px}.ctrl-grid{grid-template-columns:1fr}.sg{grid-template-columns:1fr 1fr}}
+@media(max-width:640px){
+  .ctr{padding:14px 10px}.card{padding:16px}
+  .ctrl-grid{grid-template-columns:1fr}
+  .exp-row,.exp-hdr,.exp-total{grid-template-columns:120px 1fr 90px 90px;gap:8px}
+  .exp-name{font-size:13px}.exp-val,.exp-r7{font-size:15px}
+  .sg{grid-template-columns:1fr 1fr}
+}
 </style>
 </head>
 <body>
@@ -89,7 +95,7 @@ tbody tr.tot td{border-top:2px solid var(--p);border-bottom:none;font-weight:500
   <div class="hdr">
     <div class="hdr-ic"><span class="material-icons-outlined">analytics</span></div>
     <h1>経費シミュレーター 2026</h1>
-    <p>コンサル × 街ガイド ハイブリッド型</p>
+    <p>コンサル × 街ガイド ハイブリッド型 ― 各費目をスライダーで調整</p>
   </div>
 
   <div class="card">
@@ -101,15 +107,15 @@ tbody tr.tot td{border-top:2px solid var(--p);border-bottom:none;font-weight:500
           <input type="text" id="ri" value="6,500,000" inputmode="numeric">
           <span class="u">円</span>
         </div>
-        <div class="man-chip" id="rm"></div>
+        <div class="chip" id="rm"></div>
       </div>
       <div class="ctrl-item">
-        <label>目標経費率</label>
-        <div class="slider-row">
+        <label>目標経費率の上限</label>
+        <div class="sr">
           <input type="range" id="rateSlider" min="30" max="70" value="55" step="1">
-          <div class="rate-display" id="rateDisp">55%</div>
+          <div class="rd" id="rateDisp">55%</div>
         </div>
-        <div class="man-chip" id="budgetChip"></div>
+        <div class="chip" id="budgetChip"></div>
       </div>
     </div>
   </div>
@@ -117,142 +123,178 @@ tbody tr.tot td{border-top:2px solid var(--p);border-bottom:none;font-weight:500
   <div class="sg" id="sg"></div>
 
   <div class="card">
-    <div class="ct"><span class="material-icons-outlined">table_chart</span>費目別シミュレーション</div>
-    <div class="tw">
-      <table>
-        <thead><tr>
-          <th>経費科目</th>
-          <th>判定</th>
-          <th>適正値</th>
-          <th>R7実績</th>
-          <th>比較</th>
-        </tr></thead>
-        <tbody id="tb"></tbody>
-      </table>
+    <div class="ct"><span class="material-icons-outlined">edit_note</span>費目別シミュレーション ― スライダーで調整</div>
+    <div class="gauge-bar"><div class="gauge-fill" id="gaugeFill"></div></div>
+    <div class="gauge-labels"><span id="gaugeUsed"></span><span id="gaugeBudget"></span></div>
+    <div class="exp-hdr">
+      <span>経費科目</span>
+      <span>R8 適正値を調整</span>
+      <span style="text-align:right">R8 適正値</span>
+      <span style="text-align:right">R7 実績</span>
     </div>
+    <div class="exp-list" id="expList"></div>
+    <div class="exp-total" id="expTotal"></div>
+
     <div class="sb">
       <label><span class="material-icons-outlined">link</span>保存URL</label>
       <input type="text" class="su" id="surl" readonly>
       <button class="bc" id="bcopy"><span class="material-icons-outlined">content_copy</span>コピー</button>
+      <button class="bc btn-reset" id="breset"><span class="material-icons-outlined">restart_alt</span>リセット</button>
     </div>
   </div>
 
   <div class="fn">
+    <strong>使い方</strong><br>
+    各費目のスライダーを動かしてR8年度の経費計画を作成できます。上部のゲージバーで経費合計が目標率に収まっているか確認できます。「保存URL」をコピーすれば、設定した金額を再現できます。<br><br>
     <strong>算定根拠</strong><br>
-    コンサルタント（経費率30〜50%）とツアーガイド（経費率40〜60%）の市場平均を基にハイブリッド型の適正経費率を設定。各費目の配分率は両業種の特性に応じて按分。R7実績は令和7年Rev7最終版（売上1,209,631円）に基づく。経費率はスライダーで30〜70%の範囲で調整可能。
+    減価償却費はトヨタ クラウンクロスオーバー（取得価額6,380,940円×償却率0.167×33.3%＝354,850円/年）を固定計上。地代家賃はR7実績（57,584円）を継続。その他の費目はハイブリッド型（コンサル×ガイド）の市場平均経費率を基に初期値を設定。
   </div>
 </div>
 
 <script>
 const D=[
-  {n:"租税公課",       pct:2.0, r7:33761},
-  {n:"水道光熱費",     pct:2.0, r7:48974},
-  {n:"旅費交通費",     pct:9.0, r7:89482},
-  {n:"通信費",         pct:4.5, r7:53407},
-  {n:"接待交際費",     pct:5.5, r7:107999},
-  {n:"消耗品費",       pct:3.0, r7:252830},
-  {n:"減価償却費",     pct:2.0, r7:337662},
-  {n:"外注工賃",       pct:9.0, r7:473991},
-  {n:"地代家賃",       pct:4.5, r7:57584},
-  {n:"ソフトウェア利用料",pct:6.5, r7:204688},
-  {n:"車両費",         pct:4.0, r7:126670},
-  {n:"会議費",         pct:3.0, r7:84366},
-  {n:"調査費",         pct:3.0, r7:40120},
-  {n:"新聞図書費",     pct:1.5, r7:15041},
-  {n:"支払手数料",     pct:0.5, r7:527},
-  {n:"雑費",           pct:0.0, r7:0},
+  {id:"tax",     n:"租税公課",          def:35000,   min:0,max:200000,  step:1000, r7:33761},
+  {id:"util",    n:"水道光熱費",        def:50000,   min:0,max:200000,  step:1000, r7:48974},
+  {id:"travel",  n:"旅費交通費",        def:300000,  min:0,max:600000,  step:5000, r7:89482},
+  {id:"comm",    n:"通信費",            def:160000,  min:0,max:300000,  step:5000, r7:53407},
+  {id:"ent",     n:"接待交際費",        def:200000,  min:0,max:500000,  step:5000, r7:107999},
+  {id:"supply",  n:"消耗品費",          def:100000,  min:0,max:400000,  step:5000, r7:252830},
+  {id:"depr",    n:"減価償却費",        def:354850,  min:354850,max:354850,step:1,r7:337662,fixed:true},
+  {id:"outsrc",  n:"外注工賃",          def:500000,  min:0,max:1000000, step:10000,r7:473991},
+  {id:"rent",    n:"地代家賃",          def:57584,   min:57584,max:57584,step:1,  r7:57584,fixed:true},
+  {id:"sw",      n:"ソフトウェア利用料",def:250000,  min:0,max:500000,  step:5000, r7:204688},
+  {id:"car",     n:"車両費",            def:130000,  min:0,max:400000,  step:5000, r7:126670},
+  {id:"meet",    n:"会議費",            def:100000,  min:0,max:300000,  step:5000, r7:84366},
+  {id:"research",n:"調査費",            def:100000,  min:0,max:300000,  step:5000, r7:40120},
+  {id:"book",    n:"新聞図書費",        def:50000,   min:0,max:150000,  step:1000, r7:15041},
+  {id:"fee",     n:"支払手数料",        def:5000,    min:0,max:50000,   step:1000, r7:527},
+  {id:"misc",    n:"雑費",              def:0,       min:0,max:50000,   step:1000, r7:0},
 ];
-const BASE_SUM=D.reduce((a,e)=>a+e.pct,0);
+
+const vals={};
+D.forEach(e=>{vals[e.id]=e.def});
 
 function fmt(n){return Math.round(n).toLocaleString("ja-JP")}
 function ps(v){return parseInt(v.replace(/[^0-9]/g,""),10)||0}
 
-function gp(){
+function loadParams(){
   const p=new URLSearchParams(location.search);
-  return{
-    rev:p.has("rev")?parseInt(p.get("rev"),10):null,
-    rate:p.has("rate")?parseInt(p.get("rate"),10):null
-  };
+  if(p.has("rev"))document.getElementById("ri").value=fmt(parseInt(p.get("rev"),10));
+  if(p.has("rate"))document.getElementById("rateSlider").value=p.get("rate");
+  D.forEach(e=>{if(p.has(e.id))vals[e.id]=parseInt(p.get(e.id),10)});
 }
-function burl(rev,rate){
+
+function buildUrl(){
   const u=new URL(location.href.split("?")[0]);
-  u.searchParams.set("rev",rev);
-  u.searchParams.set("rate",rate);
+  u.searchParams.set("rev",ps(document.getElementById("ri").value));
+  u.searchParams.set("rate",document.getElementById("rateSlider").value);
+  D.forEach(e=>{u.searchParams.set(e.id,vals[e.id])});
   return u.toString();
+}
+
+function buildExpRows(){
+  const list=document.getElementById("expList");
+  list.innerHTML="";
+  D.forEach(e=>{
+    const row=document.createElement("div");
+    row.className="exp-row";
+    row.id="row-"+e.id;
+
+    const nameEl=document.createElement("span");
+    nameEl.className="exp-name";
+    nameEl.textContent=e.n;
+
+    const sliderWrap=document.createElement("div");
+    sliderWrap.className="exp-slider";
+    if(e.fixed){
+      const fixLabel=document.createElement("span");
+      fixLabel.style.cssText="font-size:12px;color:var(--onv);font-style:italic";
+      fixLabel.textContent="固定値";
+      sliderWrap.appendChild(fixLabel);
+    } else {
+      const slider=document.createElement("input");
+      slider.type="range";
+      slider.min=e.min;slider.max=e.max;slider.step=e.step;
+      slider.value=vals[e.id];
+      slider.id="sl-"+e.id;
+      slider.addEventListener("input",function(){vals[e.id]=parseInt(this.value,10);render()});
+      sliderWrap.appendChild(slider);
+    }
+    const pctLabel=document.createElement("span");
+    pctLabel.className="pct-label";
+    pctLabel.id="pct-"+e.id;
+    sliderWrap.appendChild(pctLabel);
+
+    const valEl=document.createElement("span");
+    valEl.className="exp-val";
+    valEl.id="val-"+e.id;
+
+    const r7El=document.createElement("span");
+    r7El.className="exp-r7";
+    r7El.textContent="¥"+fmt(e.r7);
+
+    row.appendChild(nameEl);
+    row.appendChild(sliderWrap);
+    row.appendChild(valEl);
+    row.appendChild(r7El);
+    list.appendChild(row);
+  });
 }
 
 function render(){
   const rev=ps(document.getElementById("ri").value);
   const rate=parseInt(document.getElementById("rateSlider").value,10);
-  const scale=rate/55;
+  const budget=rev*rate/100;
 
   document.getElementById("rateDisp").textContent=rate+"%";
   document.getElementById("rm").textContent=(rev/10000).toFixed(1)+" 万円";
-  const budget=rev*rate/100;
   document.getElementById("budgetChip").textContent="経費予算 ¥"+fmt(budget);
 
-  let sTg=0,sR7=0;
-  D.forEach(e=>{sTg+=rev*(e.pct*scale)/100;sR7+=e.r7});
-
-  document.getElementById("sg").innerHTML=[
-    {l:"目標経費総額",v:"¥"+fmt(budget),s:"売上 × "+rate+"%",c:"var(--p)"},
-    {l:"費目配分合計",v:"¥"+fmt(sTg),s:rev?"売上比 "+(sTg/rev*100).toFixed(1)+"%":"",c:"var(--ok)"},
-    {l:"R7実績 (参考)",v:"¥"+fmt(sR7),s:"売上比 158.2%",c:"var(--err)"},
-    {l:"R7→目標 削減額",v:"¥"+fmt(Math.max(sR7-budget,0)),s:sR7>budget?"要削減":"達成済み",c:sR7>budget?"var(--wc)":"var(--ok)"},
-  ].map(m=>`<div class="mc"><div class="mc-l">${m.l}</div><div class="mc-v" style="color:${m.c}">${m.v}</div><div class="mc-s">${m.s}</div></div>`).join("");
-
-  const tb=document.getElementById("tb");
-  tb.innerHTML="";
-  let tTg=0,tR7=0;
-  const maxBar=rev*0.12||1;
-
+  let total=0,sR7=0;
   D.forEach(e=>{
-    const adjPct=e.pct*scale;
-    const tg=rev*adjPct/100;
-    tTg+=tg;tR7+=e.r7;
-
-    let ch,cl;
-    const diff=e.r7-tg;
-    if(tg===0&&e.r7===0){ch="—";cl="ch-ok"}
-    else if(e.r7<=tg*1.1){ch="適正";cl="ch-ok"}
-    else if(e.r7<=tg*1.5){ch="注意";cl="ch-w"}
-    else{ch="超過";cl="ch-ng"}
-
-    const bTg=Math.min(tg/maxBar*100,100);
-    const bR7=Math.min(e.r7/maxBar*100,100);
-    const r7color=e.r7>tg*1.1?"var(--err)":"var(--ok)";
-
-    const tr=document.createElement("tr");
-    tr.innerHTML=`<td>${e.n}</td>
-      <td><span class="ch ${cl}">${ch}</span></td>
-      <td style="color:var(--p);font-weight:500">${fmt(tg)}<span style="font-size:10px;color:var(--onv);font-weight:400;margin-left:4px">${adjPct.toFixed(1)}%</span></td>
-      <td>${fmt(e.r7)}</td>
-      <td><div class="bar-c">
-        <div class="bw">
-          <div class="bt" style="width:${bTg}%"></div>
-          <div class="bv" style="width:${bR7}%;background:${r7color};opacity:.5"></div>
-        </div>
-        <div class="bp">${e.r7>0&&tg>0?(e.r7>tg?"+"+(((e.r7-tg)/tg*100)|0)+"%":"-"+(((tg-e.r7)/tg*100)|0)+"%"):"—"}</div>
-      </div></td>`;
-    tb.appendChild(tr);
+    total+=vals[e.id];
+    sR7+=e.r7;
+    const pct=rev>0?((vals[e.id]/rev*100).toFixed(1)+"%"):"—";
+    document.getElementById("pct-"+e.id).textContent=pct;
+    document.getElementById("val-"+e.id).textContent="¥"+fmt(vals[e.id]);
+    if(!e.fixed){
+      const sl=document.getElementById("sl-"+e.id);
+      if(sl)sl.value=vals[e.id];
+    }
   });
 
-  const tr2=document.createElement("tr");tr2.className="tot";
-  tr2.innerHTML=`<td>合計</td><td></td>
-    <td style="color:var(--p);font-weight:500">${fmt(tTg)}</td>
-    <td>${fmt(tR7)}</td><td></td>`;
-  tb.appendChild(tr2);
+  const totalPct=rev>0?(total/rev*100):0;
+  const overBudget=total>budget;
 
-  document.getElementById("surl").value=burl(rev,rate);
+  const gf=document.getElementById("gaugeFill");
+  const gPct=budget>0?Math.min(total/budget*100,100):0;
+  gf.style.width=gPct+"%";
+  gf.style.background=overBudget?"var(--err)":"var(--p)";
+  document.getElementById("gaugeUsed").textContent="使用: ¥"+fmt(total)+" ("+totalPct.toFixed(1)+"%)";
+  document.getElementById("gaugeBudget").textContent="予算: ¥"+fmt(budget)+" ("+rate+"%)";
+
+  document.getElementById("sg").innerHTML=[
+    {l:"目標経費予算",v:"¥"+fmt(budget),s:rate+"%",c:"var(--p)"},
+    {l:"現在の経費合計",v:"¥"+fmt(total),s:totalPct.toFixed(1)+"%",c:overBudget?"var(--err)":"var(--ok)"},
+    {l:"予算残額",v:(total<=budget?"+":"")+"¥"+fmt(budget-total),s:total<=budget?"余裕あり":"予算超過",c:total<=budget?"var(--ok)":"var(--err)"},
+    {l:"R7実績との差",v:"¥"+fmt(Math.abs(total-sR7)),s:total<sR7?"削減":"増加",c:total<sR7?"var(--ok)":"var(--wc)"},
+  ].map(m=>`<div class="mc"><div class="mc-l">${m.l}</div><div class="mc-v" style="color:${m.c}">${m.v}</div><div class="mc-s">${m.s}</div></div>`).join("");
+
+  const r7Pct=rev>0?(sR7/rev*100):0;
+  document.getElementById("expTotal").innerHTML=`
+    <span style="font-size:16px;font-weight:700">合計</span><span></span>
+    <span style="text-align:right;font-family:var(--fm);color:${overBudget?'var(--err)':'var(--p)'}">¥${fmt(total)}<br><span style="font-size:13px;font-weight:700">(${totalPct.toFixed(1)}%)</span></span>
+    <span style="text-align:right;font-family:var(--fm);color:var(--onv)">¥${fmt(sR7)}<br><span style="font-size:13px;font-weight:500">(${r7Pct.toFixed(1)}%)</span></span>`;
+
+  document.getElementById("surl").value=buildUrl();
 }
 
-const prm=gp();
-if(prm.rev)document.getElementById("ri").value=fmt(prm.rev);
-if(prm.rate)document.getElementById("rateSlider").value=prm.rate;
+loadParams();
+buildExpRows();
+render();
 
-const inp=document.getElementById("ri");
-inp.addEventListener("input",function(){this.value=fmt(ps(this.value));render()});
-inp.addEventListener("focus",function(){this.select()});
+document.getElementById("ri").addEventListener("input",function(){this.value=fmt(ps(this.value));render()});
+document.getElementById("ri").addEventListener("focus",function(){this.select()});
 document.getElementById("rateSlider").addEventListener("input",render);
 
 document.getElementById("bcopy").addEventListener("click",function(){
@@ -261,8 +303,12 @@ document.getElementById("bcopy").addEventListener("click",function(){
     setTimeout(()=>{this.innerHTML='<span class="material-icons-outlined" style="font-size:15px">content_copy</span>コピー'},2000);
   });
 });
-
-render();
+document.getElementById("breset").addEventListener("click",function(){
+  D.forEach(e=>{vals[e.id]=e.def});
+  document.getElementById("ri").value=fmt(6500000);
+  document.getElementById("rateSlider").value=55;
+  buildExpRows();render();
+});
 </script>
 </body>
 </html>
